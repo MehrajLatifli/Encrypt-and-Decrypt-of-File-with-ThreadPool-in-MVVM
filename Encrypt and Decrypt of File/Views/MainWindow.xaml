@@ -1,0 +1,82 @@
+﻿<Window x:Class="Encrypt_and_Decrypt_of_File.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Encrypt_and_Decrypt_of_File" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Title="Text encryption and decryption" MinHeight="450" MinWidth="800" MaxHeight="450" MaxWidth="800" Background="Bisque" Icon="encrypted-files.png" >
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="OpenFile" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="SelectFileButtun" Grid.Column="0" Content="Select File" Margin="10" Padding="5" FontSize="25" FontWeight="Black" Background="CadetBlue" Foreground="Purple" Command="{Binding SelectFileCommand}"></Button>
+                <Border  Grid.Column="1" Background="CadetBlue" >
+                    <TextBox x:Name="FilePathTextBox" Margin="10" Padding="10,20,20,20" Background="White" Foreground="Purple" Text="Path" FontSize="25" FontWeight="Black" IsReadOnly="True"></TextBox>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="EncryptDecryptGrid" Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="PasswordTextBlock" Grid.Column="0" Margin="10" Padding="20" Foreground="CadetBlue" Text="Password" FontSize="25" FontWeight="Black"></TextBlock>
+
+                <TextBox x:Name="PasswordTextBox" Grid.Column="1" Margin="20" Padding="10" Foreground="Purple" FontSize="25" FontWeight="Black" MaxLength="10" MaxLines="10"></TextBox>
+                <RadioButton x:Name="EncryptRadioButton" Grid.Column="2" GroupName="A" Content="Encrypt" Margin="10" Padding="20" Foreground="CadetBlue"  FontSize="20" FontWeight="Black" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <RadioButton.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" ></ScaleTransform>
+                    </RadioButton.RenderTransform>
+
+                </RadioButton>
+
+                <RadioButton x:Name="DecryptRadioButton" Grid.Column="3" GroupName="A" Content="Decrypt" Margin="10" Padding="20" Foreground="CadetBlue"  FontSize="20" FontWeight="Black" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    <RadioButton.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1" ></ScaleTransform>
+                    </RadioButton.RenderTransform>
+
+                </RadioButton>
+
+            </Grid>
+            
+            <Grid x:Name="ControlButtonGrid" Grid.Row="2">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="StartButtun" Grid.Column="0" Margin="10" Padding="5" Content="Start" FontSize="40" FontWeight="Black" Background="CadetBlue" Foreground="Purple" Command="{Binding StartCommand}"></Button>
+                <Button x:Name="CancelButtun" Grid.Column="1" Margin="10" Padding="5" Content="Cancel" FontSize="40" FontWeight="Black" Background="CadetBlue" Foreground="Purple" Command="{Binding CancelCommand}"></Button>
+            </Grid>
+            <Grid x:Name="ProgressBarGrid" Grid.Row="3">
+                
+                <ProgressBar x:Name="PorcessProgressBar" Margin="10" Padding="5" Value="{Binding Pv}">
+
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ValueChanged">
+                            <i:InvokeCommandAction Command="{Binding StartCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
+
+                </ProgressBar>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
